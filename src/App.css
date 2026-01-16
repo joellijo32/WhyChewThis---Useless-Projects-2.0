@@ -1050,3 +1050,181 @@ p {
   visibility: visible;
   opacity: 1;
 }
+/* =========================================================================
+   MOBILE RESPONSIVENESS & MEDIA QUERIES
+   ========================================================================= */
+
+@media screen and (max-width: 900px) {
+  /* Scale down base fonts slightly for tablets/small desktops */
+  html {
+    font-size: 15px; 
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* --- Global Reset & Typography --- */
+  html {
+    font-size: 14px;
+  }
+  
+  .container, .nav-container {
+    padding: 0 1rem;
+  }
+
+  h1, .hero-title {
+    font-size: 2.25rem;
+    line-height: 1.2;
+  }
+  
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+
+  /* --- Mobile Navigation --- */
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--surface);
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-link {
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem;
+  }
+
+  /* --- Grid Stacking --- */
+  .calculator-grid, 
+  .planner-grid,
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2x2 grid for stats on mobile looks fine */
+  }
+
+  /* --- Panel Adjustments --- */
+  .item-selection-panel, 
+  .calculation-panel,
+  .form-section,
+  .preview-section {
+    padding: 1.25rem;
+  }
+
+  /* --- Bill / Receipt List Responsive Transformation --- */
+  .bill-header {
+    display: none; /* Hide table headers on mobile */
+  }
+
+  .bill-item-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    gap: 0.5rem;
+    position: relative;
+  }
+
+  /* Re-layout bill items to look like cards */
+  .bill-item-name {
+    width: 100%;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding-bottom: 0.5rem;
+  }
+  
+  /* Flex row for stats inside the card */
+  .bill-qty, 
+  .bill-unit, 
+  .bill-subtotal {
+    font-size: 0.9rem;
+    display: inline-block;
+    color: var(--muted);
+  }
+  
+  /* Add labels via ::before pseudo-elements for clarity if needed, 
+     but simple text is often cleaner. Let's just group them. */
+     
+  .bill-qty::before { content: "Qty: "; color: var(--text); }
+  .bill-subtotal::before { content: "Total: "; color: var(--text); font-weight: bold; }
+  
+  .bill-unit { display: none; } /* Hide unit price to save space if needed, or keep it. */
+
+  .remove-btn {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    text-align: center;
+  }
+
+  /* --- Result Display --- */
+  .result-number {
+    font-size: 2.5rem;
+  }
+
+  /* --- Diet Planner Mobile --- */
+  .macros-breakdown {
+    grid-template-columns: 1fr; /* Stack macros vertically */
+    gap: 0.5rem;
+  }
+  
+  .meal-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  
+  .meal-time {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+  }
+  
+  .meal-name {
+    margin: 0;
+    width: 100%;
+  }
+  
+  .meal-calories {
+    align-self: flex-end;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Extra Small Devices */
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .item-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Smaller cards */
+  }
+  
+  .btn-primary, .btn-secondary {
+    width: 100%; /* Full width buttons for easy tapping */
+    margin-bottom: 0.5rem;
+  }
+  
+  .nav-brand {
+    font-size: 1.1rem;
+  }
+}
